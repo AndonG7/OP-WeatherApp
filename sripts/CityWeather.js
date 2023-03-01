@@ -13,6 +13,7 @@ export class CityWeather {
         this.feel = 0;
         this.humidity = 0;
         this.precipitation = 0;
+        this.isDay = 1;
 
         //------Forecast stats------//
 

@@ -28,6 +28,7 @@ export async function loadWeather(_city) {
         cw1.feel = Math.trunc(weatherData.current.feelslike_c);
         cw1.humidity = Math.trunc(weatherData.current.humidity);
         cw1.precipitation = Math.trunc(weatherData.current.precip_mm);
+        cw1.isDay = weatherData.current.is_day;
 
         //Today
         cw1.todayMax = Math.trunc(weatherData.forecast.forecastday[0].day.maxtemp_c);
