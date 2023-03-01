@@ -1,8 +1,17 @@
 import { CityWeather } from "./sripts/CityWeather.js";
+import { loadWeather } from "./sripts/weatherData.js";
 
+
+loadWeather();
 console.log("hi");
 
-const w1 = new CityWeather("Skopje");
+function getDayName(dateStr, locale)
+{
+    var date = new Date(dateStr);
+    return date.toLocaleDateString(locale, { weekday: 'long' });        
+}
 
-console.log(w1.getCurrTemp());
-// console.log("Momentalnata temperatura vo: " + w1.name + ", " + w1.country + " e " + w1.currentTemp);
+var dateStr = '02/28/2023';
+var day = getDayName(dateStr, "en-GB"); // Gives back 'Vrijdag' which is Dutch for Friday.
+
+console.log(day);
