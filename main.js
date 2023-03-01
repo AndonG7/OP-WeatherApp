@@ -1,17 +1,20 @@
-import { CityWeather } from "./sripts/CityWeather.js";
 import { loadWeather } from "./sripts/weatherData.js";
+import { loadDom } from "./sripts/domManipulation.js";
+import { clearSearchBox } from "./sripts/clearSearch.js";
+
+export const searchBox = document.querySelector(".fsearch");
+
+const weatherObject = await loadWeather("Skopje");
+loadDom(weatherObject);
+clearSearchBox();
 
 
-loadWeather();
+searchBox.addEventListener("keydown", async function(event) {
+    if(event.key === 'Enter') {
+        const weatherObject = await loadWeather(searchBox.value);
+        loadDom(weatherObject);     
+    }  
+});
+
+
 console.log("hi");
-
-function getDayName(dateStr, locale)
-{
-    var date = new Date(dateStr);
-    return date.toLocaleDateString(locale, { weekday: 'long' });        
-}
-
-var dateStr = '02/28/2023';
-var day = getDayName(dateStr, "en-GB"); // Gives back 'Vrijdag' which is Dutch for Friday.
-
-console.log(day);
