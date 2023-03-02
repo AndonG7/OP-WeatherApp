@@ -17,19 +17,21 @@ const day3Name = document.querySelector(".day3");
 const day4Name = document.querySelector(".day4");
 
 
-export async function loadDom (_weatherObject) {
-    console.log(_weatherObject);
+
+export async function loadDom (_weatherObject, _imperial) {
+    const tempValue = _imperial ? 'F' : 'C';
+    const precValue = _imperial ? 'in' : 'mm';
 
     //---------Displaying the data in the DOM---------//
 
     //Current Stats
     mainIcon.src = _weatherObject.currIconSrc;
-    currTemp.innerHTML = _weatherObject.currTemp + "°C";
+    currTemp.innerHTML = _weatherObject.currTemp + tempValue;
     city.innerHTML = _weatherObject.city + ", " + _weatherObject.country;
     currLowHigh.innerHTML = _weatherObject.currMax + " / " + _weatherObject.currMin; 
     feelLike.innerHTML = _weatherObject.feel;
     humidity.innerHTML = _weatherObject.humidity + " %";
-    precipitation.innerHTML = _weatherObject.precipitation + " mm";
+    precipitation.innerHTML = _weatherObject.precipitation + " "+  precValue;
 
     //Today stats
     todayIcon.src = _weatherObject.todayIconSrc;
